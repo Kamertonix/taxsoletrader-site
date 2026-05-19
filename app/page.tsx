@@ -5,12 +5,12 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#02040a] text-white">
+    <main className="relative min-h-screen overflow-hidden bg-[#010309] text-white">
 
       {/* BACKGROUND */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,212,255,.15),transparent_30%),radial-gradient(circle_at_top_right,rgba(168,85,247,.15),transparent_30%),radial-gradient(circle_at_bottom,rgba(0,119,255,.12),transparent_35%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_0%,rgba(0,212,255,.20),transparent_28%),radial-gradient(circle_at_90%_10%,rgba(168,85,247,.18),transparent_30%),radial-gradient(circle_at_50%_100%,rgba(0,119,255,.14),transparent_34%)]" />
 
-      <div className="absolute inset-0 opacity-40">
+      <div className="absolute inset-0 opacity-60">
         <div className="absolute left-[-10%] top-[20%] h-[500px] w-[500px] rounded-full bg-cyan-500 blur-[140px]" />
         <div className="absolute right-[-10%] top-[10%] h-[500px] w-[500px] rounded-full bg-purple-600 blur-[160px]" />
       </div>
@@ -18,12 +18,12 @@ export default function Home() {
       {/* HEADER */}
       <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
         <Image
-          src="/logo-taxsoletrader-dark.png"
-          alt="TaxSoleTrader"
-          width={190}
-          height={190}
-          className="h-auto w-[300px] md:w-[360px]"
-        />
+  src="/logo-header.png"
+  alt="TaxSoleTrader"
+  width={260}
+  height={90}
+  className="h-auto w-[320px] md:w-[420px]"
+/>
 
         <div className="hidden gap-8 text-sm font-semibold text-slate-300 md:flex">
           <a href="#">Features</a>
