@@ -1,0 +1,121 @@
+"use client";
+
+import { useMemo, useState } from "react";
+
+const initialTiles = [
+  { id: "scan", icon: "📸", title: "Scan / Expense" },
+  { id: "transactions", icon: "💳", title: "Transactions" },
+  { id: "invoices", icon: "📄", title: "Invoices" },
+  { id: "dashboard", icon: "📈", title: "Dashboard" },
+  { id: "mtd", icon: "📊", title: "MTD" },
+  { id: "receipts", icon: "🧾", title: "Receipts" },
+  { id: "sa", icon: "🧾", title: "Self Assessment" },
+  { id: "vat", icon: "💷", title: "VAT Return" },
+  { id: "ai", icon: "🤖", title: "AI Help" },
+  { id: "deadlines", icon: "📅", title: "HMRC Deadlines" },
+  { id: "bank", icon: "🏦", title: "Bank Import" },
+  { id: "security", icon: "🔐", title: "Security" },
+];
+
+export default function InteractiveHomePhone() {
+  const [tiles, setTiles] = useState(initialTiles);
+  const [dragId, setDragId] = useState<string | null>(null);
+  const [pressed, setPressed] = useState<string | null>(null);
+
+  const orderHint = useMemo(() => tiles.slice(0, 4).map((tile) => tile.title).join(" • "), [tiles]);
+
+  function moveTile(targetId: string) {
+    if (!dragId || dragId === targetId) return;
+    setTiles((current) => {
+      const from = current.findIndex((tile) => tile.id === dragId);
+      const to = current.findIndex((tile) => tile.id === targetId);
+      if (from < 0 || to < 0) return current;
+      const copy = [...current];
+      const [item] = copy.splice(from, 1);
+      copy.splice(to, 0, item);
+      return copy;
+    });
+  }
+
+  return (
+    <div className="phone-real relative mx-auto w-[350px] max-w-full md:w-[390px]">
+      <div className="absolute -inset-8 rounded-[4.5rem] bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,.26),transparent_38%),radial-gradient(circle_at_80%_80%,rgba(217,70,239,.28),transparent_40%)] blur-3xl" />
+      <div className="relative rounded-[3.7rem] border border-white/18 bg-gradient-to-b from-slate-700/50 via-[#121826] to-black p-[10px] shadow-[0_70px_180px_rgba(0,0,0,.78),inset_0_0_0_1px_rgba(255,255,255,.08)]">
+        <div className="absolute left-1/2 top-[10px] z-30 h-[24px] w-[132px] -translate-x-1/2 rounded-b-[1.2rem] bg-black shadow-[0_12px_35px_rgba(0,0,0,.75)]" />
+        <div className="absolute right-[-4px] top-[150px] h-20 w-[5px] rounded-r-full bg-slate-600/70" />
+        <div className="absolute left-[-4px] top-[115px] h-14 w-[5px] rounded-l-full bg-slate-600/60" />
+        <div className="absolute left-[-4px] top-[185px] h-20 w-[5px] rounded-l-full bg-slate-600/50" />
+
+        <div className="relative h-[735px] overflow-hidden rounded-[3rem] bg-[#06101d] shadow-[inset_0_0_50px_rgba(59,130,246,.12)]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_0%,rgba(20,184,166,.14),transparent_26%),radial-gradient(circle_at_90%_15%,rgba(59,130,246,.16),transparent_30%)]" />
+          <div className="phone-scroll relative h-full overflow-y-auto px-6 pb-28 pt-12">
+            <div className="flex items-center justify-between text-[13px] font-black text-white">
+              <span>21:46</span>
+              <span>✈ 100</span>
+            </div>
+
+            <div className="mt-8 flex items-center gap-5">
+              <div className="grid h-[88px] w-[88px] place-items-center rounded-[1.45rem] border border-cyan-300/45 bg-[#07111f] shadow-[0_0_28px_rgba(34,211,238,.25)]">
+                <img src="/favicon.png" alt="" className="h-16 w-16 rounded-2xl object-contain" />
+              </div>
+              <div>
+                <p className="text-xl text-slate-400">Good evening, John</p>
+                <h3 className="text-[32px] font-black leading-none">
+                  Tax <span className="text-blue-400">Sole</span> Trader
+                </h3>
+                <p className="mt-2 text-lg text-slate-400">UK bookkeeping • VAT • CIS</p>
+              </div>
+            </div>
+
+            <div className="mt-10 grid grid-cols-2 gap-5">
+              {tiles.map((tile) => (
+                <button
+                  key={tile.id}
+                  draggable
+                  type="button"
+                  onDragStart={() => setDragId(tile.id)}
+                  onDragOver={(event) => event.preventDefault()}
+                  onDrop={() => moveTile(tile.id)}
+                  onDragEnd={() => setDragId(null)}
+                  onPointerDown={() => setPressed(tile.id)}
+                  onPointerUp={() => setPressed(null)}
+                  onPointerLeave={() => setPressed(null)}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setPressed(tile.id);
+                    window.setTimeout(() => setPressed(null), 140);
+                  }}
+                  className={`group min-h-[118px] rounded-[2.1rem] border border-white/10 bg-gradient-to-b from-[#183250] to-[#101827] p-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,.07),0_14px_40px_rgba(0,0,0,.22)] transition duration-200 hover:-translate-y-1 hover:border-cyan-300/35 hover:shadow-[0_0_32px_rgba(34,211,238,.13)] active:scale-[.96] ${
+                    pressed === tile.id ? "scale-[.96] border-cyan-300/60 bg-gradient-to-b from-[#21466f] to-[#121b2a]" : ""
+                  } ${dragId === tile.id ? "opacity-50" : ""}`}
+                  aria-label={`${tile.title}. Drag to reorder.`}
+                >
+                  <div className="text-2xl transition group-hover:scale-110">{tile.icon}</div>
+                  <div className="mt-3 text-xl font-black leading-tight text-white">{tile.title}</div>
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-8 rounded-[1.7rem] border border-cyan-300/20 bg-white/[0.04] p-4 text-xs leading-5 text-slate-300">
+              Drag cards to reorder. Tap cards for press effect. Demo only: buttons do not navigate.
+              <br />
+              <span className="text-cyan-200">Current top tools:</span> {orderHint}
+            </div>
+          </div>
+
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#050912] via-[#050912]/90 to-transparent" />
+          <div className="absolute inset-x-5 bottom-4 rounded-[2rem] border border-white/12 bg-[#050912]/90 px-4 py-3 backdrop-blur-xl">
+            <div className="grid grid-cols-5 gap-1 text-center text-[11px] font-black text-slate-300">
+              <span className="text-blue-400">🏠<br />Home</span>
+              <span>📈<br />Dashboard</span>
+              <span>📊<br />Reports</span>
+              <span>👨‍💼<br />Profile</span>
+              <span>⚙️<br />Settings</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p className="mt-5 text-center text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200/70">Interactive home screen demo</p>
+    </div>
+  );
+}
