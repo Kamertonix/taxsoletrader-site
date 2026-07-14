@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://taxsoletrader.com'),
   title: 'Tax Sole Trader™ — UK Sole Trader Bookkeeping',
   description: 'Premium bookkeeping app for UK sole traders, CIS workers, delivery drivers, taxi drivers and self-employed professionals. Invoices, receipts, VAT, CIS, Self Assessment, reports and accountant exports.',
   keywords: ['UK sole trader app','CIS bookkeeping','VAT return app','self assessment app','receipt scanner','invoice app UK','tax sole trader'],
@@ -18,5 +19,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body>{children}</body></html>;
+  return <html lang="en" data-scroll-behavior="smooth"><body>{children}</body></html>;
 }

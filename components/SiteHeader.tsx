@@ -8,6 +8,7 @@ const nav = [
   { href: "/features", label: "Features" },
   { href: "/pricing", label: "Pricing" },
   { href: "/support", label: "Support" },
+  { href: "/contact", label: "Contact" },
   { href: "/app", label: "Download" },
 ];
 
@@ -22,7 +23,7 @@ export default function SiteHeader() {
             src="/logo-header.png"
             alt="Tax Sole Trader"
             width={420}
-            height={110}
+            height={104}
             priority
             className="h-auto w-[230px] sm:w-[300px] lg:w-[360px]"
           />

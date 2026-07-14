@@ -19,7 +19,7 @@ const trustItems = [
   ['▥', 'MTD-style Reports'],
   ['%', 'Flat Rate VAT Support'],
   ['↥', 'Accountant Export'],
-  ['🏦', 'Bank Import'],
+  ['🏦', 'Bank Connection'],
   ['🛡️', 'Local-First Privacy'],
 ];
 
@@ -54,10 +54,10 @@ const workflowCards = [
   },
   {
     icon: '🏦',
-    title: 'Bank Import',
-    text: 'PDF statement import direction with preview, duplicate protection, categorisation and undo workflow.',
-    metric: '24',
-    label: 'Imported lines demo',
+    title: 'Bank Connection',
+    text: 'Securely connect a UK bank account and keep transactions flowing into your records, with full visibility and control over the connection.',
+    metric: '1',
+    label: 'Connected account demo',
   },
   {
     icon: '🔐',
@@ -100,7 +100,7 @@ export default function Home(){
         </div>
 
         <p className="mt-5 flex items-center gap-2 text-sm text-slate-400">
-          <span className="text-fuchsia-300">◉</span> First month free. Paid subscription after trial. Cancel anytime before renewal.
+          <span className="text-fuchsia-300">◉</span> 14-day free trial. No card required. Cancel anytime before renewal.
         </p>
 
         <div className="mt-8 flex items-center gap-3">
@@ -144,7 +144,7 @@ export default function Home(){
           <Pill>Product depth</Pill>
           <h2 className="mt-5 text-4xl font-black tracking-tight md:text-6xl">Trusted by thousands of UK sole trader workflows.</h2>
           <p className="mt-5 text-lg leading-8 text-slate-300">
-            Everything important is visible quickly: tax year profit, VAT threshold, invoices, receipts, reports, CIS, Self Assessment, bank import and privacy controls. The product feels like a personal finance cockpit for self-employed work.
+            Everything important is visible quickly: tax year profit, VAT threshold, invoices, receipts, reports, CIS, Self Assessment, bank connection and privacy controls. The product feels like a personal finance cockpit for self-employed work.
           </p>
           <div className="mt-8 grid grid-cols-2 gap-5">
             {[
@@ -184,7 +184,7 @@ export default function Home(){
             <Pill>Custom workspace</Pill>
             <h2 className="mt-5 text-4xl font-black md:text-6xl">Arrange the app around the way you work.</h2>
             <p className="mt-5 text-lg leading-8 text-slate-300">
-              The Home screen is not just a menu. It is a personalised business workspace. Users can arrange tools around their daily routine — invoices first, receipts first, VAT first, or bank import first.
+              The Home screen is not just a menu. It is a personalised business workspace. Users can arrange tools around their daily routine — invoices first, receipts first, VAT first, or bank connection first.
             </p>
             <div className="mt-7 grid gap-3 text-sm text-slate-300 md:grid-cols-2">
               {['Construction & CIS workers','Delivery drivers','Taxi / private hire','Cleaners & gardeners','Beauty & barber services','Consultants & freelancers'].map(x => (
@@ -207,19 +207,67 @@ export default function Home(){
 
     <Section className="xl:max-w-[1540px]">
       <div className="text-center">
-        <Pill>First month free</Pill>
-        <h2 className="mt-5 text-4xl font-black md:text-6xl">Serious product. Clear pricing.</h2>
-        <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-300">No permanent free plan. Tax Sole Trader is designed as a paid business tool with a first-month free trial for new users.</p>
+        <Pill>Bank connection</Pill>
+        <h2 className="mt-5 text-4xl font-black md:text-6xl">Connect your bank in three simple steps.</h2>
+        <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-300">
+          Tax Sole Trader connects securely to your UK bank account so your records stay current — without you typing every transaction by hand.
+        </p>
       </div>
-      <div className="mt-12 grid gap-6 lg:grid-cols-3">
+      <div className="mt-12 grid gap-6 md:grid-cols-3">
+        {[
+          {
+            n: '01',
+            icon: '🏦',
+            title: 'Connect your bank',
+            text: 'Choose your UK bank and securely sign in through your bank\u2019s own login screen. Tax Sole Trader never sees or stores your banking password.',
+          },
+          {
+            n: '02',
+            icon: '🔍',
+            title: 'See transactions safely',
+            text: 'Once connected, transactions start flowing into your records automatically. Everything stays visible and easy to review before it counts toward your books.',
+          },
+          {
+            n: '03',
+            icon: '✅',
+            title: 'Stay in control',
+            text: 'Check the connection status anytime, review what has come in, and disconnect your bank in one tap whenever you want — no questions asked.',
+          },
+        ].map((step) => (
+          <Card key={step.n} className="relative overflow-hidden">
+            <div className="absolute right-5 top-5 text-6xl font-black text-white/5">{step.n}</div>
+            <div className="grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-gradient-to-br from-cyan-400/15 to-fuchsia-500/15 text-2xl shadow-[0_0_26px_rgba(168,85,247,.18)]">{step.icon}</div>
+            <h3 className="mt-5 text-xl font-black text-white">{step.title}</h3>
+            <p className="mt-3 leading-7 text-slate-300">{step.text}</p>
+          </Card>
+        ))}
+      </div>
+      <p className="mt-8 text-center text-sm text-slate-400">
+        Bank connection uses secure Open Banking technology. Your login details are entered directly with your bank, never with Tax Sole Trader.
+      </p>
+    </Section>
+
+    <Section className="xl:max-w-[1540px]">
+      <div className="text-center">
+        <Pill>Free forever, upgrade when you&apos;re ready</Pill>
+        <h2 className="mt-5 text-4xl font-black md:text-6xl">Pay for what you use. Nothing else.</h2>
+        <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-300">Start with a genuinely free plan for everyday bookkeeping. Upgrade to Premium — with a 14-day free trial, no card required — for full breakdowns, exports and HMRC filing.</p>
+      </div>
+      <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
         {pricingPlans.map(p => (
-          <Card key={p.name} className={p.highlight ? 'border-fuchsia-400/50 bg-fuchsia-400/10 shadow-[0_0_70px_rgba(217,70,239,.16)]' : ''}>
-            {p.highlight && <div className="mb-4 inline-flex rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-500 px-3 py-1 text-xs font-black">MOST POPULAR</div>}
+          <Card key={p.key} className={p.highlight ? 'relative border-fuchsia-400/50 bg-fuchsia-400/10 shadow-[0_0_70px_rgba(217,70,239,.16)]' : 'relative'}>
+            {p.badge && <div className="mb-4 inline-flex rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-500 px-3 py-1 text-xs font-black">{p.badge}</div>}
             <h3 className="text-2xl font-black">{p.name}</h3>
-            <div className="mt-5 text-5xl font-black">{p.price}<span className="ml-2 text-base font-semibold text-slate-400">{p.note}</span></div>
-            <p className="mt-5 leading-8 text-slate-300">{p.description}</p>
-            <ul className="mt-7 grid gap-3 text-sm text-slate-300">{p.features.slice(0,6).map(f => <li key={f}>✓ {f}</li>)}</ul>
-            <Link href="/app" className="mt-8 block rounded-2xl border border-cyan-300/35 bg-white/5 px-6 py-4 text-center font-black transition hover:bg-white/10">Choose {p.name}</Link>
+            <div className="mt-5 flex flex-wrap items-baseline gap-2">
+              {p.strikePrice && <span className="text-lg font-bold text-slate-500 line-through">{p.strikePrice}</span>}
+              <span className="text-5xl font-black">{p.price}</span>
+              <span className="text-base font-semibold text-slate-400">{p.priceSuffix}</span>
+            </div>
+            {p.afterNote && <p className="mt-1 text-sm font-semibold text-fuchsia-300">{p.afterNote}</p>}
+            <p className="mt-1 text-sm text-slate-400">{p.note}</p>
+            <p className="mt-5 leading-7 text-slate-300">{p.description}</p>
+            <ul className="mt-7 grid gap-3 text-sm text-slate-300">{p.features.slice(0,8).map(f => <li key={f}>✓ {f}</li>)}</ul>
+            <Link href="/app" className="mt-8 block rounded-2xl border border-cyan-300/35 bg-white/5 px-6 py-4 text-center font-black transition hover:bg-white/10">{p.cta}</Link>
           </Card>
         ))}
       </div>

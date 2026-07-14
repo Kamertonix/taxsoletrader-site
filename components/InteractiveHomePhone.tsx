@@ -13,7 +13,7 @@ const initialTiles = [
   { id: "vat", icon: "💷", title: "VAT Return" },
   { id: "ai", icon: "🤖", title: "AI Help" },
   { id: "deadlines", icon: "📅", title: "HMRC Deadlines" },
-  { id: "bank", icon: "🏦", title: "Bank Import" },
+  { id: "bank", icon: "🏦", title: "Bank Connection" },
   { id: "security", icon: "🔐", title: "Security" },
 ];
 

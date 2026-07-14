@@ -7,7 +7,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#030711]/75 backdrop-blur-2xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
-          <Image src="/logo-header.png" alt="Tax Sole Trader" width={260} height={90} priority className="h-auto w-[210px] md:w-[260px]" />
+          <Image src="/logo-header.png" alt="Tax Sole Trader" width={260} height={65} priority className="h-auto w-[210px] md:w-[260px]" />
         </Link>
         <nav className="hidden items-center gap-8 text-sm font-semibold text-slate-300 md:flex">
           {navItems.map(([label, href]) => <Link key={href} href={href} className="transition hover:text-white">{label}</Link>)}
@@ -23,7 +23,7 @@ export function Footer() {
     <footer className="relative z-10 border-t border-white/10 bg-[#02050c]">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-8">
         <div>
-          <Image src="/logo-header.png" alt="Tax Sole Trader" width={240} height={80} className="h-auto w-[220px]" />
+          <Image src="/logo-header.png" alt="Tax Sole Trader" width={240} height={60} className="h-auto w-[220px]" />
           <p className="mt-5 max-w-sm text-sm leading-7 text-slate-400">Premium bookkeeping for UK sole traders, CIS workers, drivers and self-employed professionals.</p>
           <p className="mt-4 text-sm text-slate-500">© 2026 Tax Sole Trader™. All rights reserved.</p>
         </div>
@@ -31,7 +31,7 @@ export function Footer() {
         <FootGroup title="Specialist tools" items={[["VAT Return","/vat-return"],["Self Assessment","/self-assessment"],["Receipts","/receipts"],["MTD Reports","/mtd-reports"],["Security","/security"]]} />
         <div>
           <h3 className="font-black text-white">Legal</h3>
-          <div className="mt-4 grid gap-3 text-sm text-slate-400"><Link href="/privacy">Privacy Policy</Link><Link href="/terms">Terms & Conditions</Link><a href={`mailto:${supportEmail}`}>{supportEmail}</a></div>
+          <div className="mt-4 grid gap-3 text-sm text-slate-400"><Link href="/privacy">Privacy Policy</Link><Link href="/delete-account">Delete Account & Data</Link><Link href="/terms">Terms & Conditions</Link><a href={`mailto:${supportEmail}`}>{supportEmail}</a></div>
         </div>
       </div>
     </footer>
