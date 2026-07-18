@@ -29,7 +29,7 @@ const sections: Section[] = [
         items: [
           "Registered address: 13 Stilwell Close, Orpington, England, BR5 3FA",
           "Company number: 17240499",
-          "ICO registration number: to be added once confirmed",
+          "ICO registration number: CSN6915594",
         ],
       },
     ],
