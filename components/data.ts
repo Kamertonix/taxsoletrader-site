@@ -13,7 +13,7 @@ export const coreFeatures = [
     icon: '📊',
     title: 'Business Dashboard',
     text: 'A real-time overview for income, expenses, profit, estimated tax, VAT threshold, paid invoices, overdue invoices and business health.',
-    bullets: ['Month, quarter and tax-year views', 'VAT threshold tracking', 'AI insight cards', 'Invoice and receipt KPIs'],
+    bullets: ['Month, quarter and tax-year views', 'VAT threshold tracking', 'Overdue invoice alerts', 'Invoice and receipt KPIs'],
   },
   {
     icon: '🧾',
@@ -37,13 +37,13 @@ export const coreFeatures = [
     icon: '🏗️',
     title: 'CIS Accounting',
     text: 'Designed for construction subcontractors and trade businesses with CIS suffered, gross scheme and deduction-aware reporting.',
-    bullets: ['20% / 30% handling direction', 'CIS suffered summaries', 'Invoice-aware calculations', 'Self Assessment support'],
+    bullets: ['20% / 30% handling', 'CIS suffered summaries', 'Invoice-aware calculations', 'Self Assessment support'],
   },
   {
-    icon: '🤖',
-    title: 'AI Help & Insights',
-    text: 'Business-focused prompts and insight cards help users spot tax changes, VAT movement and readiness issues faster.',
-    bullets: ['Business performance notes', 'VAT change alerts', 'SA readiness cues', 'Practical next actions'],
+    icon: '🏛️',
+    title: 'Direct HMRC Filing',
+    text: 'Connect your Government Gateway account and submit VAT returns and quarterly Income Tax updates straight to HMRC, with full fraud-prevention compliance built in.',
+    bullets: ['Making Tax Digital (MTD) compliant', 'VAT Return submission', 'Quarterly Income Tax updates', 'Secure, official OAuth connection'],
   },
   {
     icon: '🏦',
@@ -55,7 +55,7 @@ export const coreFeatures = [
     icon: '🔐',
     title: 'Privacy & Protection',
     text: 'Local-first thinking, screen privacy mode, controlled exports and clear warnings around sensitive accounting data.',
-    bullets: ['Local records direction', 'Screen privacy mode', 'Backup/export folders', 'Legal protection screen'],
+    bullets: ['Local records', 'Screen privacy mode', 'Backup/export folders', 'Legal protection screen'],
   },
 ];
 
@@ -114,7 +114,7 @@ export const pricingPlans = [
     cta: 'Start Monthly',
     description: 'Everything in Free, plus the tools built for filing and accountants.',
     features: [
-      'Everything in Free', 'Bank connection', 'VAT Return — full Box 1–9 breakdown, submit directly to HMRC, VAT Export, VAT Report PDF, VAT Statement', 'MTD Quarterly report export, with direct HMRC submission coming soon', 'HMRC filing and connection', 'Estimated Tax card — Income Tax, Class 2 & Class 4 NI', 'Full Report card with category breakdown', 'Any export — PDF or CSV', 'Self Assessment — full Tax Breakdown calculation', 'Accountant export pack',
+      'Everything in Free', 'Bank connection', 'VAT Return — full Box 1–9 breakdown, submit directly to HMRC, VAT Export, VAT Report PDF, VAT Statement', 'MTD Quarterly report — full breakdown, PDF/CSV export, direct submission to HMRC', 'HMRC filing and connection', 'Estimated Tax card — Income Tax, Class 2 & Class 4 NI', 'Full Report card with category breakdown', 'Any export — PDF or CSV', 'Self Assessment — full Tax Breakdown calculation', 'Accountant export pack',
     ],
   },
   {
@@ -128,14 +128,14 @@ export const pricingPlans = [
     cta: 'Start Annual',
     description: 'The same full Premium subscription, billed once a year at a fixed price.',
     features: [
-      'Everything in Free', 'Bank connection', 'VAT Return — full Box 1–9 breakdown, submit directly to HMRC, VAT Export, VAT Report PDF, VAT Statement', 'MTD Quarterly report export, with direct HMRC submission coming soon', 'HMRC filing and connection', 'Estimated Tax card — Income Tax, Class 2 & Class 4 NI', 'Full Report card with category breakdown', 'Any export — PDF or CSV', 'Self Assessment — full Tax Breakdown calculation', 'Accountant export pack',
+      'Everything in Free', 'Bank connection', 'VAT Return — full Box 1–9 breakdown, submit directly to HMRC, VAT Export, VAT Report PDF, VAT Statement', 'MTD Quarterly report — full breakdown, PDF/CSV export, direct submission to HMRC', 'HMRC filing and connection', 'Estimated Tax card — Income Tax, Class 2 & Class 4 NI', 'Full Report card with category breakdown', 'Any export — PDF or CSV', 'Self Assessment — full Tax Breakdown calculation', 'Accountant export pack',
     ],
   },
 ];
 
 export const screenshots = [
   { src: '/screens/home-grid.jpg', title: 'Customisable Home', text: 'Arrange tools around the way you work.' },
-  { src: '/screens/dashboard-year.jpg', title: 'Business Dashboard', text: 'Tax year overview, VAT threshold and AI insight.' },
+  { src: '/screens/dashboard-year.jpg', title: 'Business Dashboard', text: 'Tax year overview, VAT threshold and overdue invoice tracking.' },
   { src: '/screens/self-assessment.jpg', title: 'Self Assessment', text: 'PAYE, self-employment, CIS, student loan and payments on account.' },
   { src: '/screens/vat-return.jpg', title: 'VAT Return', text: 'Box 1–9 logic with export buttons and MTD-ready summary.' },
   { src: '/screens/receipt-hub.jpg', title: 'Receipt Hub', text: 'Search, filter, categories, VAT estimate and accountant export.' },
@@ -147,8 +147,8 @@ export const screenshots = [
 export const faqs = [
   ['Is Tax Sole Trader for UK sole traders?', 'Yes. The product is designed around UK self-employed workflows including income, expenses, receipts, invoices, VAT, CIS and Self Assessment style reporting.'],
   ['Is there a free version?', 'Yes. The Free plan is genuinely free forever — no account, no card, no subscription. It covers real day-to-day invoicing, transactions, receipts, mileage and a final VAT/Self Assessment figure. Premium adds the detailed breakdowns, exports, bank connection and HMRC filing, with a 14-day free trial (no card required, once per account) before you pay anything.'],
-  ['Does it support VAT and Flat Rate VAT?', 'Yes. The app direction includes standard VAT, Flat Rate VAT, VAT schemes, quarter selection, VAT Return boxes and VAT-related exports.'],
-  ['Does it support CIS?', 'Yes. CIS is a core differentiator: CIS suffered, construction workflows, gross scheme direction and CIS-aware invoice/reporting logic.'],
+  ['Does it support VAT and Flat Rate VAT?', 'Yes. The app includes standard VAT, Flat Rate VAT, VAT schemes, quarter selection, VAT Return boxes and VAT-related exports.'],
+  ['Does it support CIS?', 'Yes. CIS is a core differentiator: CIS suffered, construction workflows, gross scheme and CIS-aware invoice/reporting logic.'],
   ['Can users export reports for accountants?', 'Yes. Export PDF, CSV, saved exports and accountant pack workflows are part of the product positioning.'],
   ['Is it full accounting software?', 'No. The point is to stay simpler than enterprise accounting systems while still covering the real weekly workflows of UK self-employed people.'],
 ];

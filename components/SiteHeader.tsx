@@ -31,13 +31,13 @@ export default function SiteHeader() {
 
         <nav className="hidden items-center gap-8 text-sm font-bold text-slate-300 md:flex">
           {nav.map((item) => (
-            <Link key={item.href} href={item.href} className="transition hover:text-cyan-300">
+            <Link key={item.href} href={item.href} className="transition hover:text-[#5BA3FF]">
               {item.label}
             </Link>
           ))}
           <Link
             href="/app"
-            className="rounded-2xl border border-cyan-300/40 bg-white/[0.04] px-5 py-3 text-white shadow-[0_0_30px_rgba(47,128,255,.18)] transition hover:bg-white/[0.08]"
+            className="rounded-2xl border border-[#5BA3FF]/40 bg-white/[0.04] px-5 py-3 text-white shadow-[0_0_30px_rgba(47,128,255,.18)] transition hover:bg-white/[0.08]"
           >
             Get App
           </Link>

@@ -12,7 +12,7 @@ export function Header() {
         <nav className="hidden items-center gap-8 text-sm font-semibold text-slate-300 md:flex">
           {navItems.map(([label, href]) => <Link key={href} href={href} className="transition hover:text-white">{label}</Link>)}
         </nav>
-        <Link href="/app" className="rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 px-5 py-3 text-sm font-black shadow-[0_0_35px_rgba(90,90,255,.35)] transition hover:scale-105">Start Free Trial</Link>
+        <Link href="/app" className="tst-press rounded-2xl bg-gradient-to-r from-[#5BA3FF] to-[#2F80FF] px-5 py-3 text-sm font-black shadow-[0_0_35px_rgba(47,128,255,.35)] transition hover:brightness-110">Start Free Trial</Link>
       </div>
     </header>
   );
@@ -42,16 +42,16 @@ function FootGroup({title,items}:{title:string;items:string[][]}){return <div><h
 export function Shell({children}:{children:React.ReactNode}){return <main className="min-h-screen overflow-hidden bg-[#02050c] text-white"><Background/><Header/>{children}<Footer/></main>}
 export function Background(){return <>
   <div className="fixed inset-0 z-0 bg-[#020612]"/>
-  <div className="fixed inset-0 z-0 bg-[radial-gradient(circle_at_8%_8%,rgba(0,212,255,.20),transparent_30%),radial-gradient(circle_at_86%_12%,rgba(168,85,247,.24),transparent_33%),radial-gradient(circle_at_58%_56%,rgba(37,99,235,.16),transparent_38%),radial-gradient(circle_at_50%_100%,rgba(6,182,212,.10),transparent_36%)]"/>
+  <div className="fixed inset-0 z-0 bg-[radial-gradient(circle_at_8%_8%,rgba(47,128,255,.20),transparent_30%),radial-gradient(circle_at_86%_12%,rgba(29,78,216,.18),transparent_33%),radial-gradient(circle_at_58%_56%,rgba(91,163,255,.14),transparent_38%),radial-gradient(circle_at_50%_100%,rgba(47,128,255,.10),transparent_36%)]"/>
   <div className="fixed inset-0 z-0 opacity-[.18] [background-image:linear-gradient(rgba(148,163,184,.24)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,.24)_1px,transparent_1px)] [background-size:72px_72px]"/>
-  <div className="fixed inset-0 z-0 opacity-70 [background:linear-gradient(115deg,transparent_30%,rgba(14,165,233,.12)_42%,rgba(168,85,247,.16)_52%,transparent_68%)]"/>
-  <div className="fixed -bottom-32 left-1/2 z-0 h-64 w-[75vw] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl"/>
+  <div className="fixed inset-0 z-0 opacity-70 [background:linear-gradient(115deg,transparent_30%,rgba(47,128,255,.12)_42%,rgba(29,78,216,.14)_52%,transparent_68%)]"/>
+  <div className="fixed -bottom-32 left-1/2 z-0 h-64 w-[75vw] -translate-x-1/2 rounded-full bg-[#2F80FF]/10 blur-3xl"/>
 </>}
 export function Section({children,className=''}:{children:React.ReactNode;className?:string}){return <section className={`relative z-10 mx-auto max-w-7xl px-5 py-20 lg:px-8 ${className}`}>{children}</section>}
-export function Pill({children}:{children:React.ReactNode}){return <div className="inline-flex items-center rounded-full border border-cyan-300/25 bg-white/5 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-cyan-200 shadow-[inset_0_0_25px_rgba(34,211,238,.08)] backdrop-blur">{children}</div>}
+export function Pill({children}:{children:React.ReactNode}){return <div className="inline-flex items-center rounded-full border border-[#5BA3FF]/25 bg-white/5 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#5BA3FF] shadow-[inset_0_0_25px_rgba(47,128,255,.08)] backdrop-blur">{children}</div>}
 export function GradientTitle({children}:{children:React.ReactNode}){return <h1 className="mt-5 max-w-5xl text-5xl font-black leading-[0.96] tracking-[-0.05em] md:text-7xl lg:text-[92px]">{children}</h1>}
 export function Card({children,className=''}:{children:React.ReactNode;className?:string}){return <div className={`rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.035] p-6 shadow-[0_30px_90px_rgba(0,0,0,.28)] backdrop-blur-xl ${className}`}>{children}</div>}
-export function CTA(){return <Section><div className="rounded-[2.2rem] border border-cyan-300/30 bg-gradient-to-br from-blue-600/25 via-indigo-700/15 to-fuchsia-600/25 p-8 md:p-12"><div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center"><div><Pill>Launch ready</Pill><h2 className="mt-4 max-w-3xl text-4xl font-black tracking-tight md:text-6xl">A serious fintech-style presence for Tax Sole Trader™.</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">Website, app landing page, support, privacy, terms and product pages — ready to connect with Google Play, App Store and future subscription plans.</p></div><Link href="/app" className="rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 px-8 py-5 text-center font-black shadow-[0_0_55px_rgba(99,102,241,.45)]">Open /app QR page</Link></div></div></Section>}
+export function CTA(){return <Section><div className="rounded-[2.2rem] border border-[#5BA3FF]/30 bg-gradient-to-br from-[#2F80FF]/25 via-[#1D4ED8]/15 to-[#5BA3FF]/20 p-8 md:p-12"><div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center"><div><Pill>Launch ready</Pill><h2 className="mt-4 max-w-3xl text-4xl font-black tracking-tight md:text-6xl">A serious fintech-style presence for Tax Sole Trader™.</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">Website, app landing page, support, privacy, terms and product pages — ready to connect with Google Play, App Store and future subscription plans.</p></div><Link href="/app" className="tst-press rounded-2xl bg-gradient-to-r from-[#5BA3FF] to-[#2F80FF] px-8 py-5 text-center font-black shadow-[0_0_55px_rgba(47,128,255,.45)] transition hover:brightness-110">Open /app QR page</Link></div></div></Section>}
 
 export function PhoneMock({
   src='/screens/dashboard-year.jpg',
@@ -62,7 +62,7 @@ export function PhoneMock({
 }:{src?:string; alt?:string; className?:string; viewportClassName?:string; rotate?:boolean}){
   return (
     <div className={`relative mx-auto w-[286px] sm:w-[310px] md:w-[338px] ${className}`}>
-      <div className="absolute -inset-8 rounded-[4rem] bg-[radial-gradient(circle,rgba(34,211,238,.24),rgba(99,102,241,.14)_42%,rgba(217,70,239,.18)_62%,transparent_74%)] blur-3xl" />
+      <div className="absolute -inset-8 rounded-[4rem] bg-[radial-gradient(circle,rgba(47,128,255,.24),rgba(29,78,216,.14)_42%,rgba(91,163,255,.18)_62%,transparent_74%)] blur-3xl" />
       <div
         className={`phone-real relative rounded-[3.35rem] border border-white/18 bg-[linear-gradient(145deg,#4b5563_0%,#111827_10%,#02040a_48%,#202938_100%)] p-[9px] shadow-[0_65px_180px_rgba(0,0,0,.72),inset_0_0_0_1px_rgba(255,255,255,.06)] ${rotate ? 'rotate-[2deg]' : ''}`}
       >
@@ -92,7 +92,7 @@ export function PhoneMock({
           <div className="pointer-events-none absolute inset-x-4 bottom-0 z-20 h-24 rounded-b-[2.6rem] bg-gradient-to-t from-black/45 via-black/18 to-transparent" />
         </div>
       </div>
-      <p className="mt-5 text-center text-xs font-black uppercase tracking-[0.24em] text-cyan-200/55">Scroll inside phone</p>
+      <p className="mt-5 text-center text-xs font-black uppercase tracking-[0.24em] text-[#5BA3FF]/55">Scroll inside phone</p>
     </div>
   );
 }

@@ -39,7 +39,7 @@ export default function InteractiveHomePhone() {
 
   return (
     <div className="phone-real relative mx-auto w-[350px] max-w-full md:w-[390px]">
-      <div className="absolute -inset-8 rounded-[4.5rem] bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,.26),transparent_38%),radial-gradient(circle_at_80%_80%,rgba(217,70,239,.28),transparent_40%)] blur-3xl" />
+      <div className="absolute -inset-8 rounded-[4.5rem] bg-[radial-gradient(circle_at_30%_20%,rgba(47,128,255,.26),transparent_38%),radial-gradient(circle_at_80%_80%,rgba(29,78,216,.28),transparent_40%)] blur-3xl" />
       <div className="relative rounded-[3.7rem] border border-white/18 bg-gradient-to-b from-slate-700/50 via-[#121826] to-black p-[10px] shadow-[0_70px_180px_rgba(0,0,0,.78),inset_0_0_0_1px_rgba(255,255,255,.08)]">
         <div className="absolute left-1/2 top-[10px] z-30 h-[24px] w-[132px] -translate-x-1/2 rounded-b-[1.2rem] bg-black shadow-[0_12px_35px_rgba(0,0,0,.75)]" />
         <div className="absolute right-[-4px] top-[150px] h-20 w-[5px] rounded-r-full bg-slate-600/70" />
@@ -55,7 +55,7 @@ export default function InteractiveHomePhone() {
             </div>
 
             <div className="mt-8 flex items-center gap-5">
-              <div className="grid h-[88px] w-[88px] place-items-center rounded-[1.45rem] border border-cyan-300/45 bg-[#07111f] shadow-[0_0_28px_rgba(34,211,238,.25)]">
+              <div className="grid h-[88px] w-[88px] place-items-center rounded-[1.45rem] border border-[#5BA3FF]/45 bg-[#07111f] shadow-[0_0_28px_rgba(47,128,255,.25)]">
                 <img src="/favicon.png" alt="" className="h-16 w-16 rounded-2xl object-contain" />
               </div>
               <div>
@@ -85,8 +85,8 @@ export default function InteractiveHomePhone() {
                     setPressed(tile.id);
                     window.setTimeout(() => setPressed(null), 140);
                   }}
-                  className={`group min-h-[118px] rounded-[2.1rem] border border-white/10 bg-gradient-to-b from-[#183250] to-[#101827] p-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,.07),0_14px_40px_rgba(0,0,0,.22)] transition duration-200 hover:-translate-y-1 hover:border-cyan-300/35 hover:shadow-[0_0_32px_rgba(34,211,238,.13)] active:scale-[.96] ${
-                    pressed === tile.id ? "scale-[.96] border-cyan-300/60 bg-gradient-to-b from-[#21466f] to-[#121b2a]" : ""
+                  className={`group min-h-[118px] rounded-[2.1rem] border border-white/10 bg-gradient-to-b from-[#183250] to-[#101827] p-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,.07),0_14px_40px_rgba(0,0,0,.22)] transition duration-200 hover:-translate-y-1 hover:border-[#5BA3FF]/35 hover:shadow-[0_0_32px_rgba(47,128,255,.13)] active:scale-[.96] ${
+                    pressed === tile.id ? "scale-[.96] border-[#5BA3FF]/60 bg-gradient-to-b from-[#21466f] to-[#121b2a]" : ""
                   } ${dragId === tile.id ? "opacity-50" : ""}`}
                   aria-label={`${tile.title}. Drag to reorder.`}
                 >
@@ -96,10 +96,10 @@ export default function InteractiveHomePhone() {
               ))}
             </div>
 
-            <div className="mt-8 rounded-[1.7rem] border border-cyan-300/20 bg-white/[0.04] p-4 text-xs leading-5 text-slate-300">
+            <div className="mt-8 rounded-[1.7rem] border border-[#5BA3FF]/20 bg-white/[0.04] p-4 text-xs leading-5 text-slate-300">
               Drag cards to reorder. Tap cards for press effect. Demo only: buttons do not navigate.
               <br />
-              <span className="text-cyan-200">Current top tools:</span> {orderHint}
+              <span className="text-[#5BA3FF]">Current top tools:</span> {orderHint}
             </div>
           </div>
 
@@ -115,7 +115,7 @@ export default function InteractiveHomePhone() {
           </div>
         </div>
       </div>
-      <p className="mt-5 text-center text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200/70">Interactive home screen demo</p>
+      <p className="mt-5 text-center text-xs font-semibold uppercase tracking-[0.22em] text-[#5BA3FF]/70">Interactive home screen demo</p>
     </div>
   );
 }

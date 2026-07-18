@@ -32,7 +32,7 @@ export default function SupportPage() {
             <p className="mt-4 leading-8 text-slate-300">
               Use this email for app questions, bug reports, launch access, account issues and general product support.
             </p>
-            <a href="mailto:support@taxsoletrader.com" className="mt-7 inline-flex rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 px-6 py-4 text-sm font-black">
+            <a href="mailto:support@taxsoletrader.com" className="mt-7 inline-flex rounded-2xl bg-gradient-to-r from-[#5BA3FF] via-[#2F80FF] to-[#1D4ED8] px-6 py-4 text-sm font-black">
               support@taxsoletrader.com
             </a>
           </div>

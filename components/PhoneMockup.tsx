@@ -14,7 +14,7 @@ export default function PhoneMockup() {
 
   return (
     <div className="relative mx-auto w-full max-w-[430px]">
-      <div className="absolute inset-0 rounded-[70px] bg-gradient-to-r from-cyan-400/30 via-blue-500/20 to-purple-600/30 blur-3xl" />
+      <div className="absolute inset-0 rounded-[70px] bg-gradient-to-r from-[#5BA3FF]/30 via-blue-500/20 to-[#1D4ED8]/30 blur-3xl" />
       <div className="floaty relative rounded-[58px] border border-white/10 bg-gradient-to-br from-slate-700/40 via-black to-slate-950 p-4 shadow-[0_55px_150px_rgba(0,0,0,.78)]">
         <div className="rounded-[46px] border border-white/10 bg-[#071120] p-5">
           <div className="mx-auto mb-5 h-6 w-32 rounded-b-2xl bg-black/80" />
@@ -26,7 +26,7 @@ export default function PhoneMockup() {
               </div>
               <div className="mt-1 text-sm font-bold text-slate-300">Tax Year 2026–2027</div>
             </div>
-            <div className="grid h-11 w-11 place-items-center rounded-2xl border border-blue-300/20 bg-blue-400/10 text-blue-300">
+            <div className="grid h-11 w-11 place-items-center rounded-2xl border border-blue-300/20 bg-blue-400/10 text-[#5BA3FF]">
               ⟡
             </div>
           </div>
@@ -35,7 +35,7 @@ export default function PhoneMockup() {
             <div className="text-sm text-slate-400">Profit This Year</div>
             <div className="mt-2 text-4xl font-black">£18,735</div>
             <div className="mt-2 text-sm font-bold text-emerald-400">+12.5% vs last year</div>
-            <div className="mt-6 h-14 rounded-full border-b-4 border-cyan-300 opacity-80 shadow-[0_20px_35px_rgba(34,211,238,.20)]" />
+            <div className="mt-6 h-14 rounded-full border-b-4 border-[#5BA3FF] opacity-80 shadow-[0_20px_35px_rgba(47,128,255,.20)]" />
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-3">
@@ -46,7 +46,7 @@ export default function PhoneMockup() {
                   "rounded-2xl border border-white/10 p-4",
                   i === 0 ? "bg-blue-500/10" : "",
                   i === 1 ? "bg-orange-500/10" : "",
-                  i === 2 ? "bg-purple-500/10" : "",
+                  i === 2 ? "bg-[#2F80FF]/10" : "",
                   i === 3 ? "bg-emerald-500/10" : "",
                 ].join(" ")}
               >
@@ -59,7 +59,7 @@ export default function PhoneMockup() {
           <div className="mt-5">
             <div className="mb-3 flex items-center justify-between text-sm font-black">
               <span>Recent Activity</span>
-              <span className="text-cyan-300">See all</span>
+              <span className="text-[#5BA3FF]">See all</span>
             </div>
 
             {rows.map(([title, sub, value]) => (
@@ -80,7 +80,7 @@ export default function PhoneMockup() {
 
           <div className="mt-5 grid grid-cols-3 gap-3">
             {["Invoice", "Receipt", "Scan"].map((item) => (
-              <div key={item} className="rounded-2xl border border-blue-300/20 bg-blue-500/10 px-3 py-3 text-center text-xs font-black text-blue-200">
+              <div key={item} className="rounded-2xl border border-blue-300/20 bg-blue-500/10 px-3 py-3 text-center text-xs font-black text-[#5BA3FF]">
                 {item}
               </div>
             ))}
