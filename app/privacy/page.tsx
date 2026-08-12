@@ -157,7 +157,7 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: "Where this feature is used, our Open Banking provider, TrueLayer, facilitates the secure connection between your bank and the app; we never see or store your online banking password. You can disconnect a connected bank account at any time from within the app, which stops any further data retrieval from that account.",
+        text: "Where this feature is used, our Open Banking provider, Enable Banking, facilitates the secure connection between your bank and the app; we never see or store your online banking password. You can disconnect a connected bank account at any time from within the app, which stops any further data retrieval from that account.",
       },
       {
         type: "p",
@@ -232,7 +232,7 @@ const sections: Section[] = [
             "VAT and income figures you choose to submit; fraud-prevention technical headers required by HMRC",
           ],
           [
-            "TrueLayer",
+            "Enable Banking",
             "Regulated bank connection, if you choose to connect a bank account",
             "Bank transaction data you authorise for retrieval",
           ],
