@@ -3,11 +3,11 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://taxsoletrader.com'),
-  title: 'Tax Sole Trader™ — UK Sole Trader Bookkeeping',
+  title: 'Tax Sole Trader® — UK Sole Trader Bookkeeping',
   description: 'Premium bookkeeping app for UK sole traders, CIS workers, delivery drivers, taxi drivers and self-employed professionals. Invoices, receipts, VAT, CIS, Self Assessment, reports and accountant exports.',
   keywords: ['UK sole trader app','CIS bookkeeping','VAT return app','self assessment app','receipt scanner','invoice app UK','tax sole trader'],
   openGraph: {
-    title: 'Tax Sole Trader™ — Accounting Made Simple. Taxes Made Easy.',
+    title: 'Tax Sole Trader® — Accounting Made Simple. Taxes Made Easy.',
     description: 'A premium bookkeeping platform built around real UK self-employed workflows.',
     url: 'https://taxsoletrader.com',
     siteName: 'Tax Sole Trader',

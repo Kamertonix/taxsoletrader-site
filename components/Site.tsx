@@ -53,7 +53,7 @@ export function Footer() {
         <FooterCol title="Legal" items={[["Privacy Policy","/privacy"],["Terms","/terms"],["Contact","/support"]]} />
       </div>
       <div className="mx-auto flex max-w-[1500px] flex-col justify-between gap-3 border-t border-white/10 px-5 py-5 text-sm text-slate-500 md:flex-row lg:px-8">
-        <span>© 2026 Tax Sole Trader™. All rights reserved.</span>
+        <span>© 2026 Tax Sole Trader®. All rights reserved.</span>
         <span>UK bookkeeping • VAT • CIS • Self Assessment</span>
       </div>
     </footer>

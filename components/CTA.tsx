@@ -10,7 +10,7 @@ export default function CTA() {
               Professional launch ready
             </div>
             <h2 className="mt-4 text-4xl font-black tracking-[-1.5px] md:text-5xl">
-              A serious fintech-style presence for Tax Sole Trader™
+              A serious fintech-style presence for Tax Sole Trader®
             </h2>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
               Website, domain, support page and universal app QR link — ready for Google Play,

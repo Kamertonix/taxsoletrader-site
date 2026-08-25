@@ -2,7 +2,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 const sections = [
-  ["1. Acceptance of terms", "By accessing the Tax Sole Trader™ website, mobile application or related services, you agree to these Terms & Conditions. If you do not agree, you should not use the service."],
+  ["1. Acceptance of terms", "By accessing the Tax Sole Trader® website, mobile application or related services, you agree to these Terms & Conditions. If you do not agree, you should not use the service."],
   ["2. Product purpose", "Tax Sole Trader is designed to help UK sole traders, CIS subcontractors, drivers, tradespeople and self-employed professionals organise bookkeeping records, invoices, receipts, mileage, VAT information, CIS information, reports and exports."],
   ["3. Not professional advice", "The service is a software product. It does not provide regulated tax, accounting, legal, investment or financial advice. Users remain responsible for checking records, calculations, filings, VAT returns, CIS entries, Self Assessment information and any information provided to HMRC, an accountant or another party."],
   ["4. User responsibility", "You are responsible for entering accurate information, reviewing imported data, checking calculations, keeping backup records, protecting login credentials and ensuring that any submissions or exports are correct before use."],
@@ -28,7 +28,7 @@ export default function TermsPage() {
           <div className="text-xs font-black uppercase tracking-[0.32em] text-blue-300">Legal</div>
           <h1 className="mt-4 text-4xl font-black tracking-[-1px] md:text-6xl">Terms & Conditions</h1>
           <p className="mt-5 leading-8 text-slate-300">
-            Last updated: 2026. These terms are written to match the website and in-app legal structure for Tax Sole Trader™.
+            Last updated: 2026. These terms are written to match the website and in-app legal structure for Tax Sole Trader®.
           </p>
           <div className="mt-10 grid gap-8 text-slate-300">
             {sections.map(([title, text]) => (

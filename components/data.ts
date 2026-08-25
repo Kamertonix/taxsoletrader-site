@@ -1,4 +1,4 @@
-export const productName = 'Tax Sole Trader™';
+export const productName = 'Tax Sole Trader®';
 export const supportEmail = 'support@taxsoletrader.com';
 
 export const navItems = [
