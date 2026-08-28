@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Shell, Section, Pill, Card, CTA } from '@/components/ui';
-import { coreFeatures, pricingPlans, faqs } from '@/components/data';
+import { coreFeatures, freePlan, trialPlan, paidTiers, faqs } from '@/components/data';
 import InteractiveHomePhone from '@/components/InteractiveHomePhone';
 
 const heroBullets = [
@@ -273,20 +273,33 @@ export default function Home(){
       <div className="text-center">
         <Pill>Free forever, upgrade when you&apos;re ready</Pill>
         <h2 className="mt-5 text-4xl font-black md:text-6xl">Pay for what you use. Nothing else.</h2>
-        <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-300">Start with a genuinely free plan for everyday bookkeeping. Upgrade to Premium — with a 14-day free trial, no card required — for full breakdowns, exports and HMRC filing.</p>
+        <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-300">Start with a genuinely free plan for everyday bookkeeping. Upgrade to Basic, Pro or Complete — with a 14-day free trial, no card required — for full breakdowns, direct HMRC filing and live accountant support.</p>
       </div>
-      <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {pricingPlans.map(p => (
+      <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+        {[freePlan, trialPlan].map(p => (
+          <Card key={p.key} className="relative">
+            {p.badge && <div className="mb-4 inline-flex rounded-full bg-gradient-to-r from-[#5BA3FF] to-[#2F80FF] px-3 py-1 text-xs font-black">{p.badge}</div>}
+            <h3 className="text-2xl font-black">{p.name}</h3>
+            <div className="mt-5 flex flex-wrap items-baseline gap-2">
+              <span className="text-5xl font-black">{p.price}</span>
+              <span className="text-base font-semibold text-slate-400">{p.priceSuffix}</span>
+            </div>
+            <p className="mt-1 text-sm text-slate-400">{p.note}</p>
+            <p className="mt-5 leading-7 text-slate-300">{p.description}</p>
+            <ul className="mt-7 grid gap-3 text-sm text-slate-300">{p.features.slice(0,8).map(f => <li key={f}>✓ {f}</li>)}</ul>
+            <Link href="/app" className="mt-8 block rounded-2xl border border-[#5BA3FF]/35 bg-white/5 px-6 py-4 text-center font-black transition hover:bg-white/10">{p.cta}</Link>
+          </Card>
+        ))}
+        {paidTiers.map(p => (
           <Card key={p.key} className={p.highlight ? 'relative border-[#2F80FF]/50 bg-[#2F80FF]/10 shadow-[0_0_70px_rgba(29,78,216,.16)]' : 'relative'}>
             {p.badge && <div className="mb-4 inline-flex rounded-full bg-gradient-to-r from-[#5BA3FF] to-[#2F80FF] px-3 py-1 text-xs font-black">{p.badge}</div>}
             <h3 className="text-2xl font-black">{p.name}</h3>
             <div className="mt-5 flex flex-wrap items-baseline gap-2">
-              {p.strikePrice && <span className="text-lg font-bold text-slate-500 line-through">{p.strikePrice}</span>}
-              <span className="text-5xl font-black">{p.price}</span>
-              <span className="text-base font-semibold text-slate-400">{p.priceSuffix}</span>
+              {p.monthlyIntroPrice && <span className="text-lg font-bold text-slate-500 line-through">{p.monthlyPrice}</span>}
+              <span className="text-5xl font-black">{p.monthlyIntroPrice || p.monthlyPrice}</span>
+              <span className="text-base font-semibold text-slate-400">/month excl. 20% VAT</span>
             </div>
-            {p.afterNote && <p className="mt-1 text-sm font-semibold text-[#5BA3FF]">{p.afterNote}</p>}
-            <p className="mt-1 text-sm text-slate-400">{p.note}</p>
+            {p.monthlyIntroNote && <p className="mt-1 text-sm font-semibold text-[#5BA3FF]">{p.monthlyIntroNote}</p>}
             <p className="mt-5 leading-7 text-slate-300">{p.description}</p>
             <ul className="mt-7 grid gap-3 text-sm text-slate-300">{p.features.slice(0,8).map(f => <li key={f}>✓ {f}</li>)}</ul>
             <Link href="/app" className="mt-8 block rounded-2xl border border-[#5BA3FF]/35 bg-white/5 px-6 py-4 text-center font-black transition hover:bg-white/10">{p.cta}</Link>
