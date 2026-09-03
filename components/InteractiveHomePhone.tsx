@@ -57,9 +57,7 @@ export default function InteractiveHomePhone() {
             </div>
 
             <div className="mt-5 flex items-center gap-3">
-              <div className="grid h-[66px] w-[66px] place-items-center rounded-2xl border border-[#5BA3FF]/45 bg-[#07111f] shadow-[0_0_20px_rgba(47,128,255,.25)]">
-                <img src="/favicon.png" alt="" className="h-12 w-12 rounded-xl object-contain" />
-              </div>
+              <img src="/app-icon.png" alt="" className="h-[66px] w-[66px] object-contain" />
               <div>
                 <p className="text-sm text-slate-400">Good evening, John</p>
                 <h3 className="text-[22px] font-black leading-tight">
@@ -87,7 +85,7 @@ export default function InteractiveHomePhone() {
                     setPressed(tile.id);
                     window.setTimeout(() => setPressed(null), 140);
                   }}
-                  className={`group aspect-[360/234] flex flex-col items-center justify-center gap-2 rounded-xl border text-center shadow-[inset_0_1px_0_rgba(255,255,255,.07),0_10px_28px_rgba(0,0,0,.22)] transition duration-200 hover:-translate-y-0.5 active:scale-[.96] ${
+                  className={`group aspect-[360/234] flex flex-col items-center justify-center gap-2 rounded-[23px] border text-center shadow-[inset_0_1px_0_rgba(255,255,255,.07),0_10px_28px_rgba(0,0,0,.22)] transition duration-200 hover:-translate-y-0.5 active:scale-[.96] ${
                     tile.ring
                       ? "tile-alert-pulse border-2"
                       : "border-white/10 hover:border-[#5BA3FF]/35 hover:shadow-[0_0_24px_rgba(47,128,255,.13)]"
