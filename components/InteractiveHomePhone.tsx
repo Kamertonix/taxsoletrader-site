@@ -50,26 +50,26 @@ export default function InteractiveHomePhone() {
 
         <div className="relative h-[735px] overflow-hidden rounded-[3rem] bg-[#06101d] shadow-[inset_0_0_50px_rgba(59,130,246,.12)]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_0%,rgba(20,184,166,.14),transparent_26%),radial-gradient(circle_at_90%_15%,rgba(59,130,246,.16),transparent_30%)]" />
-          <div className="phone-scroll relative h-full overflow-y-auto px-6 pb-28 pt-12">
-            <div className="flex items-center justify-between text-[13px] font-black text-white">
+          <div className="phone-scroll relative h-full overflow-y-auto px-6 pb-24 pt-10">
+            <div className="flex items-center justify-between text-[11px] font-black text-white">
               <span>21:46</span>
               <span>✈ 100</span>
             </div>
 
-            <div className="mt-8 flex items-center gap-5">
-              <div className="grid h-[88px] w-[88px] place-items-center rounded-[1.45rem] border border-[#5BA3FF]/45 bg-[#07111f] shadow-[0_0_28px_rgba(47,128,255,.25)]">
-                <img src="/favicon.png" alt="" className="h-16 w-16 rounded-2xl object-contain" />
+            <div className="mt-5 flex items-center gap-3">
+              <div className="grid h-[66px] w-[66px] place-items-center rounded-2xl border border-[#5BA3FF]/45 bg-[#07111f] shadow-[0_0_20px_rgba(47,128,255,.25)]">
+                <img src="/favicon.png" alt="" className="h-12 w-12 rounded-xl object-contain" />
               </div>
               <div>
-                <p className="text-xl text-slate-400">Good evening, John</p>
-                <h3 className="text-[32px] font-black leading-none">
+                <p className="text-sm text-slate-400">Good evening, John</p>
+                <h3 className="text-[22px] font-black leading-tight">
                   Tax <span className="text-blue-400">Sole</span> Trader
                 </h3>
-                <p className="mt-2 text-lg text-slate-400">UK bookkeeping • VAT • CIS</p>
+                <p className="mt-1 text-xs text-slate-400">UK bookkeeping • VAT • CIS</p>
               </div>
             </div>
 
-            <div className="mt-10 grid grid-cols-2 gap-5">
+            <div className="mt-6 grid grid-cols-2 gap-3">
               {tiles.map((tile) => (
                 <button
                   key={tile.id}
@@ -87,33 +87,33 @@ export default function InteractiveHomePhone() {
                     setPressed(tile.id);
                     window.setTimeout(() => setPressed(null), 140);
                   }}
-                  className={`group min-h-[118px] rounded-[2.1rem] border p-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,.07),0_14px_40px_rgba(0,0,0,.22)] transition duration-200 hover:-translate-y-1 active:scale-[.96] ${
+                  className={`group rounded-xl border py-4 px-2 text-center shadow-[inset_0_1px_0_rgba(255,255,255,.07),0_10px_28px_rgba(0,0,0,.22)] transition duration-200 hover:-translate-y-0.5 active:scale-[.96] ${
                     tile.status
                       ? "tile-alert-pulse border-2"
-                      : "border-white/10 hover:border-[#5BA3FF]/35 hover:shadow-[0_0_32px_rgba(47,128,255,.13)]"
+                      : "border-white/10 hover:border-[#5BA3FF]/35 hover:shadow-[0_0_24px_rgba(47,128,255,.13)]"
                   } bg-gradient-to-b from-[#183250] to-[#101827] ${
                     pressed === tile.id ? "scale-[.96] border-[#5BA3FF]/60 bg-gradient-to-b from-[#21466f] to-[#121b2a]" : ""
                   } ${dragId === tile.id ? "opacity-50" : ""}`}
                   style={tile.status ? { borderColor: tile.status.color, color: tile.status.color } : undefined}
                   aria-label={`${tile.title}${tile.status ? `. ${tile.status.label}` : ""}. Drag to reorder.`}
                 >
-                  <div className="text-2xl transition group-hover:scale-110">{tile.icon}</div>
-                  <div className="mt-3 text-xl font-black leading-tight text-white">{tile.title}</div>
-                  {tile.status && <div className="mt-1 text-sm font-bold">{tile.status.label}</div>}
+                  <div className="text-sm transition group-hover:scale-110">{tile.icon}</div>
+                  <div className="mt-1 text-xs font-black leading-tight text-white">{tile.title}</div>
+                  {tile.status && <div className="mt-0.5 text-[10px] font-bold">{tile.status.label}</div>}
                 </button>
               ))}
             </div>
 
-            <div className="mt-8 rounded-[1.7rem] border border-[#5BA3FF]/20 bg-white/[0.04] p-4 text-xs leading-5 text-slate-300">
+            <div className="mt-6 rounded-2xl border border-[#5BA3FF]/20 bg-white/[0.04] p-3 text-[11px] leading-5 text-slate-300">
               Drag cards to reorder. Tap cards for press effect. Demo only: buttons do not navigate.
               <br />
               <span className="text-[#5BA3FF]">Current top tools:</span> {orderHint}
             </div>
           </div>
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#050912] via-[#050912]/90 to-transparent" />
-          <div className="absolute inset-x-5 bottom-4 rounded-[2rem] border border-white/12 bg-[#050912]/90 px-4 py-3 backdrop-blur-xl">
-            <div className="grid grid-cols-5 gap-1 text-center text-[11px] font-black text-slate-300">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#050912] via-[#050912]/90 to-transparent" />
+          <div className="absolute inset-x-4 bottom-3 rounded-2xl border border-white/12 bg-[#050912]/90 px-3 py-2 backdrop-blur-xl">
+            <div className="grid grid-cols-5 gap-1 text-center text-[9px] font-black text-slate-300">
               <span className="text-blue-400">🏠<br />Home</span>
               <span>📈<br />Dashboard</span>
               <span>📊<br />Reports</span>
