@@ -46,10 +46,34 @@ export const coreFeatures = [
     bullets: ['Making Tax Digital (MTD) compliant', 'VAT Return submission', 'Quarterly Income Tax updates', 'Secure, official OAuth connection'],
   },
   {
-    icon: '🏦',
-    title: 'Bank Connection',
-    text: 'Securely connect your UK bank account and keep transactions flowing straight into your records, with full control to review and manage the connection at any time.',
-    bullets: ['Secure Open Banking connection', 'Connected account overview', 'Review before it counts', 'Disconnect anytime'],
+    icon: '📊',
+    title: 'MTD Quarterly Report',
+    text: 'A clean quarterly workspace summarising income and expenses for Making Tax Digital, with full breakdowns kept in the app for review before anything is submitted.',
+    bullets: ['Q1–Q4 quarterly summaries', 'Income and expense breakdown', 'PDF and CSV export', 'Direct quarterly submission to HMRC'],
+  },
+  {
+    icon: '📝',
+    title: 'Self Assessment Intelligence',
+    text: 'A single review screen combining PAYE income, self-employment profit, CIS suffered, student loan repayments and payments on account into one estimated tax position.',
+    bullets: ['PAYE and self-employment combined', 'CIS suffered tracking', 'Student loan and marriage allowance', 'SA readiness indicator'],
+  },
+  {
+    icon: '🚗',
+    title: 'Mileage Tracker',
+    text: 'Log business trips and let the app apply HMRC-approved mileage rates automatically, kept separate from actual vehicle expense claims.',
+    bullets: ['HMRC mileage rates applied automatically', 'Business trip log', 'Included in Self Assessment estimate', 'Vehicle expense rule guidance'],
+  },
+  {
+    icon: '📅',
+    title: 'HMRC Deadlines',
+    text: 'Every upcoming VAT, quarterly MTD and Self Assessment deadline in one place, so nothing is missed at the end of a period.',
+    bullets: ['VAT deadline tracking', 'Quarterly MTD deadlines', 'Self Assessment due dates', 'At-a-glance upcoming payments'],
+  },
+  {
+    icon: '👤',
+    title: 'Invite Accountant',
+    text: 'Give your accountant secure, read-only access to your records on the Complete plan, without sharing logins or exporting files by hand.',
+    bullets: ['Secure accountant invite codes', 'Read-only client access', 'No shared logins', 'Included on the Complete plan'],
   },
   {
     icon: '🔐',
@@ -173,7 +197,7 @@ export const screenshots = [
 
 export const faqs = [
   ['Is Tax Sole Trader for UK sole traders?', 'Yes. The product is designed around UK self-employed workflows including income, expenses, receipts, invoices, VAT, CIS and Self Assessment style reporting.'],
-  ['Is there a free version?', 'Yes. The Free plan is genuinely free forever — no account, no card, no subscription. It covers real day-to-day invoicing, transactions, receipts, mileage and a final VAT/Self Assessment figure. Premium adds the detailed breakdowns, exports, bank connection and HMRC filing, with a 14-day free trial (no card required, once per account) before you pay anything.'],
+  ['Is there a free version?', 'Yes. The Free plan is genuinely free forever — no account, no card, no subscription. It covers real day-to-day invoicing, transactions, receipts, mileage and a final VAT/Self Assessment figure. Premium adds the detailed breakdowns, exports, MTD quarterly reports and direct HMRC filing, with a 14-day free trial (no card required, once per account) before you pay anything.'],
   ['Does it support VAT and Flat Rate VAT?', 'Yes. The app includes standard VAT, Flat Rate VAT, VAT schemes, quarter selection, VAT Return boxes and VAT-related exports.'],
   ['Does it support CIS?', 'Yes. CIS is a core differentiator: CIS suffered, construction workflows, gross scheme and CIS-aware invoice/reporting logic.'],
   ['Can users export reports for accountants?', 'Yes. Export PDF, CSV, saved exports and accountant pack workflows are part of the product positioning.'],
