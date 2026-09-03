@@ -3,18 +3,20 @@
 import { useMemo, useState } from "react";
 
 const initialTiles = [
-  { id: "scan", icon: "📸", title: "Scan / Expense" },
+  { id: "scan", icon: "📷", title: "Scan / Expenses" },
+  { id: "mileage", icon: "🚗", title: "Mileage Tracker" },
   { id: "transactions", icon: "💳", title: "Transactions" },
   { id: "invoices", icon: "📄", title: "Invoices" },
   { id: "dashboard", icon: "📈", title: "Dashboard" },
-  { id: "mtd", icon: "📊", title: "MTD" },
-  { id: "receipts", icon: "🧾", title: "Receipts" },
-  { id: "sa", icon: "🧾", title: "Self Assessment" },
-  { id: "vat", icon: "💷", title: "VAT Return" },
-  { id: "ai", icon: "🤖", title: "AI Help" },
+  { id: "mtd", icon: "📊", title: "MTD Report" },
+  { id: "sa", icon: "📝", title: "Self Assessment" },
+  { id: "accountant", icon: "👤", title: "Invite Accountant" },
+  { id: "vat", icon: "🧾", title: "VAT Return" },
+  { id: "boltimport", icon: "📥", title: "Bolt Import" },
   { id: "deadlines", icon: "📅", title: "HMRC Deadlines" },
-  { id: "bank", icon: "🏦", title: "Bank Connection" },
-  { id: "security", icon: "🔐", title: "Security" },
+  { id: "bankimport", icon: "📤", title: "Bank Import" },
+  { id: "organizer", icon: "📁", title: "Organizer" },
+  { id: "hmrcconnection", icon: "💻", title: "HMRC Connection" },
 ];
 
 export default function InteractiveHomePhone() {
