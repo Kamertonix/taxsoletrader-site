@@ -30,6 +30,26 @@ a { text-decoration: none; }
 .phone-scroll::-webkit-scrollbar-thumb { background: linear-gradient(var(--tst-accent-light), var(--tst-accent-dark)); border-radius: 999px; }
 
 
+@keyframes alertPulseRing {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+  50% { box-shadow: 0 0 0 9px transparent; opacity: .65; }
+}
+.alert-pulse-ring {
+  position: absolute;
+  border-radius: 1.7rem;
+  border: 3px solid currentColor;
+  pointer-events: none;
+  animation: alertPulseRing 1.8s ease-in-out infinite;
+}
+
+@keyframes tileAlertPulse {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; }
+  50% { box-shadow: 0 0 0 6px transparent; }
+}
+.tile-alert-pulse {
+  animation: tileAlertPulse 1.8s ease-in-out infinite;
+}
+
 @keyframes luxuryPulse {
   0%, 100% { opacity: .55; transform: translate3d(0,0,0) scale(1); }
   50% { opacity: .9; transform: translate3d(0,-10px,0) scale(1.03); }
