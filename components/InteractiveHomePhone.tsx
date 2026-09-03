@@ -2,13 +2,13 @@
 
 import { useMemo, useState } from "react";
 
-const initialTiles = [
+const initialTiles: { id: string; icon: string; title: string; ring?: string }[] = [
   { id: "scan", icon: "📷", title: "Scan / Expenses" },
   { id: "mileage", icon: "🚗", title: "Mileage Tracker" },
-  { id: "transactions", icon: "💳", title: "Transactions", status: { label: "Needs review", color: "#ffce3d" } },
-  { id: "invoices", icon: "📄", title: "Invoices", status: { label: "Overdue", color: "#ff4d4f" } },
+  { id: "invoices", icon: "📄", title: "Invoices Overdue", ring: "#ff4d4f" },
   { id: "dashboard", icon: "📈", title: "Dashboard" },
   { id: "mtd", icon: "📊", title: "MTD Report" },
+  { id: "transactions", icon: "💳", title: "Transactions Needs review", ring: "#ffce3d" },
   { id: "sa", icon: "📝", title: "Self Assessment" },
   { id: "accountant", icon: "👤", title: "Invite Accountant" },
   { id: "vat", icon: "🧾", title: "VAT Return" },
@@ -87,19 +87,18 @@ export default function InteractiveHomePhone() {
                     setPressed(tile.id);
                     window.setTimeout(() => setPressed(null), 140);
                   }}
-                  className={`group rounded-xl border py-4 px-2 text-center shadow-[inset_0_1px_0_rgba(255,255,255,.07),0_10px_28px_rgba(0,0,0,.22)] transition duration-200 hover:-translate-y-0.5 active:scale-[.96] ${
-                    tile.status
+                  className={`group aspect-[360/234] flex flex-col items-center justify-center gap-2 rounded-xl border text-center shadow-[inset_0_1px_0_rgba(255,255,255,.07),0_10px_28px_rgba(0,0,0,.22)] transition duration-200 hover:-translate-y-0.5 active:scale-[.96] ${
+                    tile.ring
                       ? "tile-alert-pulse border-2"
                       : "border-white/10 hover:border-[#5BA3FF]/35 hover:shadow-[0_0_24px_rgba(47,128,255,.13)]"
                   } bg-gradient-to-b from-[#183250] to-[#101827] ${
                     pressed === tile.id ? "scale-[.96] border-[#5BA3FF]/60 bg-gradient-to-b from-[#21466f] to-[#121b2a]" : ""
                   } ${dragId === tile.id ? "opacity-50" : ""}`}
-                  style={tile.status ? { borderColor: tile.status.color, color: tile.status.color } : undefined}
-                  aria-label={`${tile.title}${tile.status ? `. ${tile.status.label}` : ""}. Drag to reorder.`}
+                  style={tile.ring ? { borderColor: tile.ring, color: tile.ring } : undefined}
+                  aria-label={`${tile.title}. Drag to reorder.`}
                 >
-                  <div className="text-sm transition group-hover:scale-110">{tile.icon}</div>
-                  <div className="mt-1 text-xs font-black leading-tight text-white">{tile.title}</div>
-                  {tile.status && <div className="mt-0.5 text-[10px] font-bold">{tile.status.label}</div>}
+                  <div className="text-base transition group-hover:scale-110">{tile.icon}</div>
+                  <div className="px-2 text-[11px] font-black leading-snug text-white">{tile.title}</div>
                 </button>
               ))}
             </div>
