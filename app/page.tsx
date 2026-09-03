@@ -19,7 +19,7 @@ const trustItems = [
   ['▥', 'MTD-style Reports'],
   ['%', 'Flat Rate VAT Support'],
   ['↥', 'Accountant Export'],
-  ['🏦', 'Bank Connection'],
+  ['📅', 'HMRC Deadlines'],
   ['🛡️', 'Local-First Privacy'],
 ];
 
@@ -53,11 +53,11 @@ const workflowCards = [
     label: 'Receipt total demo',
   },
   {
-    icon: '🏦',
-    title: 'Bank Connection',
-    text: 'Securely connect a UK bank account and keep transactions flowing into your records, with full visibility and control over the connection.',
-    metric: '1',
-    label: 'Connected account demo',
+    icon: '📊',
+    title: 'MTD Quarterly Report',
+    text: 'A clean quarterly workspace summarising income and expenses for Making Tax Digital, ready to review before anything is submitted.',
+    metric: 'Q2',
+    label: 'Current quarter demo',
   },
   {
     icon: '🔐',
@@ -225,48 +225,6 @@ export default function Home(){
           </div>
         </div>
       </div>
-    </Section>
-
-    <Section className="xl:max-w-[1540px]">
-      <div className="text-center">
-        <Pill>Bank connection</Pill>
-        <h2 className="mt-5 text-4xl font-black md:text-6xl">Connect your bank in three simple steps.</h2>
-        <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-300">
-          Tax Sole Trader connects securely to your UK bank account so your records stay current — without you typing every transaction by hand.
-        </p>
-      </div>
-      <div className="mt-12 grid gap-6 md:grid-cols-3">
-        {[
-          {
-            n: '01',
-            icon: '🏦',
-            title: 'Connect your bank',
-            text: 'Choose your UK bank and securely sign in through your bank\u2019s own login screen. Tax Sole Trader never sees or stores your banking password.',
-          },
-          {
-            n: '02',
-            icon: '🔍',
-            title: 'See transactions safely',
-            text: 'Once connected, transactions start flowing into your records automatically. Everything stays visible and easy to review before it counts toward your books.',
-          },
-          {
-            n: '03',
-            icon: '✅',
-            title: 'Stay in control',
-            text: 'Check the connection status anytime, review what has come in, and disconnect your bank in one tap whenever you want — no questions asked.',
-          },
-        ].map((step) => (
-          <Card key={step.n} className="relative overflow-hidden">
-            <div className="absolute right-5 top-5 text-6xl font-black text-white/5">{step.n}</div>
-            <div className="grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-gradient-to-br from-[#5BA3FF]/15 to-[#1D4ED8]/15 text-2xl shadow-[0_0_26px_rgba(29,78,216,.18)]">{step.icon}</div>
-            <h3 className="mt-5 text-xl font-black text-white">{step.title}</h3>
-            <p className="mt-3 leading-7 text-slate-300">{step.text}</p>
-          </Card>
-        ))}
-      </div>
-      <p className="mt-8 text-center text-sm text-slate-400">
-        Bank connection uses secure Open Banking technology. Your login details are entered directly with your bank, never with Tax Sole Trader.
-      </p>
     </Section>
 
     <Section className="xl:max-w-[1540px]">

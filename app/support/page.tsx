@@ -5,7 +5,7 @@ import SectionTitle from "@/components/SectionTitle";
 const supportCards = [
   ["Getting started", "Help with profile setup, tax year, VAT, CIS, vehicle method, invoices and first reports."],
   ["Technical support", "Report app crashes, layout issues, login problems, biometric lock issues, PDF export issues or device-specific problems."],
-  ["Bank connection and scanner", "Help with connecting a bank account, receipt scanning, merchant rules, OCR and transaction review."],
+  ["Scanner and receipts", "Help with receipt scanning, merchant rules, OCR and transaction review."],
   ["Reports and exports", "Questions about accountant exports, VAT summaries, Self Assessment reports, mileage summaries and document organisation."],
 ];
 
