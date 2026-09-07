@@ -7,10 +7,11 @@ const supportCards = [
   ["Technical support", "Report app crashes, layout issues, login problems, biometric lock issues, PDF export issues or device-specific problems."],
   ["Scanner and receipts", "Help with receipt scanning, merchant rules, OCR and transaction review."],
   ["Reports and exports", "Questions about accountant exports, VAT summaries, Self Assessment reports, mileage summaries and document organisation."],
+  ["Self Assessment and accountant access", "Help with the Self Assessment estimate, HMRC deadlines, mileage tracking, and inviting an accountant for read-only access to your records."],
 ];
 
 const faqs = [
-  ["Does Tax Sole Trader submit directly to HMRC?", "The product is designed to organise records and prepare reports. Direct filing or MTD features depend on the final released version and should be checked before relying on it."],
+  ["Does Tax Sole Trader submit directly to HMRC?", "Yes, on the Pro and Complete plans. The app connects to HMRC's own Making Tax Digital service to submit VAT Returns and quarterly Income Tax updates directly, once your Government Gateway account is connected."],
   ["Can support give tax advice?", "Support can help with app functionality, but it cannot provide regulated tax, legal or accounting advice."],
   ["What should I include in a support request?", "Include your device model, Android version, app version, the screen name, screenshots if useful and a clear description of the issue."],
   ["Should I email bank passwords or confidential access details?", "No. Never send banking passwords, app passwords or unnecessary sensitive credentials by email."],
