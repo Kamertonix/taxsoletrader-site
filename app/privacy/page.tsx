@@ -90,6 +90,7 @@ const sections: Section[] = [
         items: [
           "Local data health and readiness indicators generated on your device (e.g. whether required settings are complete)",
           "Export/backup history metadata (e.g. when a backup was last created)",
+          "Crash reports from release versions of the app (error message, stack trace, device model, OS and app version), sent to Sentry without personal identifiers, screen contents or financial figures (see section 12)",
         ],
       },
       {
@@ -121,7 +122,7 @@ const sections: Section[] = [
     blocks: [
       {
         type: "p",
-        text: "Tax Sole Trader is designed to work fully offline. By default, everything you enter — transactions, invoices, expenses, mileage, organizer items, settings — is stored only on your own device, using standard local app storage. No account is required to use these core features, and nothing is uploaded anywhere unless you deliberately choose one of the optional online features described below.",
+        text: "Tax Sole Trader is designed to work fully offline. By default, everything you enter — transactions, invoices, expenses, mileage, organizer items, settings — is stored only on your own device, in an encrypted database in the app's private storage. No account is required to use these core features, and nothing is uploaded anywhere unless you deliberately choose one of the optional online features described below.",
       },
       {
         type: "p",
@@ -163,6 +164,11 @@ const sections: Section[] = [
         type: "p",
         text: "Imported bank transactions are treated the same as any other transaction in the app: stored locally (and in your cloud account, if enabled), and never shared with anyone beyond what this policy describes.",
       },
+      { type: "h3", text: "7.1 Reading a PDF bank statement with AI (optional)" },
+      {
+        type: "p",
+        text: "If you upload a PDF bank statement and choose the AI statement reader, the file is sent to Google Cloud Vertex AI (Gemini) on a paid Google Cloud plan, which extracts the transactions and the statement's own totals so the app can check its reading. Under Google Cloud's terms the content is not used to train Google's models and is not kept after it has been read; this processing may take place outside the UK. The app does not keep the PDF — only the transactions you choose to import are saved. If you prefer, you can enter transactions manually or use a bank connection instead.",
+      },
     ],
   },
   {
@@ -174,7 +180,7 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: 'Where required by HMRC for this connection method, the app also collects a small set of technical "fraud prevention" details (such as device identifier, timezone, and screen dimensions) and sends them to HMRC alongside each request, exactly as HMRC\'s Making Tax Digital specification requires of all compliant software.',
+        text: 'Where required by HMRC for this connection method, the app also collects a small set of technical "fraud prevention" details (such as device identifier, timezone, and screen dimensions) and sends them to HMRC alongside each request, exactly as HMRC\'s Making Tax Digital specification requires of all compliant software. These include a device identifier, your device\'s local and public IP addresses, screen size, window size, time zone, operating system and device model, and your app account email as the user identifier.',
       },
     ],
   },
@@ -201,7 +207,20 @@ const sections: Section[] = [
     blocks: [
       {
         type: "p",
-        text: "Paid subscription features, where available, are billed through Google Play Billing. Google processes your payment details directly — we never see or store your card number or other payment credentials. We receive only confirmation of your subscription status (e.g. active, cancelled, expired) so the app can unlock the relevant features.",
+        text: "Paid subscription features are billed through Google Play Billing on Android and the Apple App Store on iPhone and iPad. Google or Apple processes your payment details directly — we never see or store your card number or other payment credentials. We receive only confirmation of your subscription status (e.g. active, cancelled, expired) and the store's transaction reference so the app can unlock the relevant features. Deleting your account does not cancel a store subscription: cancel it in Google Play or the App Store.",
+      },
+    ],
+  },
+  {
+    title: "11A. Sharing with your accountant and invoice links",
+    blocks: [
+      {
+        type: "p",
+        text: "If you invite an accountant, only the categories you allow (for example invoices, transactions, VAT or MTD reports, or your business profile including NINO and UTR) are copied to our cloud so that your accountant can see them in the accountant portal. You can change the categories or revoke access at any time; revoking removes their access immediately and deletes the shared copies. We keep a record of when your accountant accessed your records.",
+      },
+      {
+        type: "p",
+        text: "If you share an invoice by link, anyone with that link can open the invoice until you revoke the link in the app.",
       },
     ],
   },
@@ -227,6 +246,21 @@ const sections: Section[] = [
             "Google account email/name (sign-in only); payment status (Play Billing only)",
           ],
           [
+            "Google Cloud Vertex AI (Gemini)",
+            "Reading a PDF bank statement, only if you choose the AI statement reader (may be processed outside the UK)",
+            "The statement you upload; not kept and not used for training",
+          ],
+          [
+            "Apple Inc.",
+            "App Store distribution and subscriptions on iPhone and iPad",
+            "Subscription status and transaction reference",
+          ],
+          [
+            "Microsoft Azure Key Vault",
+            "Holds the encryption keys and secrets our servers use",
+            "No records — keys and secrets only",
+          ],
+          [
             "HM Revenue & Customs",
             "Making Tax Digital VAT and Income Tax obligations and submissions, if you connect your Government Gateway account",
             "VAT and income figures you choose to submit; fraud-prevention technical headers required by HMRC",
@@ -237,7 +271,7 @@ const sections: Section[] = [
             "Bank transaction data you authorise for retrieval",
           ],
           [
-            "Sentry (crash reporting)",
+            "Sentry (crash reporting, EU data centre)",
             "Diagnosing app crashes so we can fix them",
             "Error/crash reports only — no personal data, screen contents or financial figures are included",
           ],
@@ -254,8 +288,8 @@ const sections: Section[] = [
         type: "ul",
         items: [
           "Performance of a contract — to provide the core bookkeeping features you've asked to use, including any paid subscription",
-          "Consent — for optional features you actively choose to turn on, such as cloud sync, bank connection, or Google Sign-In; you can withdraw this consent at any time by disabling the feature",
-          "Legal obligation — where we must retain or disclose information to comply with UK law (e.g. a lawful request from HMRC or a court)",
+          "Consent — for optional features you actively choose to turn on, such as cloud sync, bank connection, the AI statement reader, sharing with your accountant, or Google Sign-In; you can withdraw this consent at any time by disabling the feature",
+          "Legal obligation — the fraud prevention information HMRC requires with every Making Tax Digital request, and where we must retain or disclose information to comply with UK law (e.g. a lawful request from HMRC or a court)",
           "Legitimate interests — for keeping the app secure and reliable (including crash diagnostics), in a way that does not override your own privacy rights",
         ],
       },
@@ -274,7 +308,16 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: "If you use the optional cloud account, we retain your cloud-stored data for as long as your account remains active, and delete it within a reasonable period after a verified deletion request (see section 16), except where we are legally required to retain specific records for longer.",
+        text: "If you use the optional cloud account, we retain your cloud-stored data for as long as your account remains active. Deleting your account in the app deletes it immediately, together with your cloud backups, shared accountant copies, HMRC and bank connections, and the record of your HMRC submissions — so export a copy first if you still need it.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Cloud backups: your latest 3 backups plus your fullest one; older backups are deleted automatically",
+          "HMRC connection: until you disconnect or delete your account; HMRC's own permission lasts up to 18 months",
+          "Bank connection: until you disconnect, your consent with the bank expires, or you delete your account",
+          "Crash reports: kept by Sentry for a limited period, then deleted automatically",
+        ],
       },
     ],
   },
@@ -318,7 +361,8 @@ const sections: Section[] = [
       {
         type: "ul",
         items: [
-          "Local data benefits from your device's own operating system security (and, if you set one, the app's own PIN lock)",
+          "Local records are kept in an encrypted database with a key held in the device's secure storage (Android Keystore / iOS Keychain), plus the app's own PIN lock if you set one",
+          "Cloud backups are encrypted (AES-256-GCM) before they leave your device",
           "Cloud-stored data (if enabled) is encrypted in transit (HTTPS/TLS) and at rest, with database-level access rules ensuring one user's records are never visible to another",
           "We do not embed any server-side secret keys inside the app itself",
           "Bank and HMRC connections use official, regulated OAuth flows — we never see or store your banking or Government Gateway password",
@@ -333,7 +377,7 @@ const sections: Section[] = [
     blocks: [
       {
         type: "p",
-        text: "If you enable cloud sync, your data is processed on servers operated by our backend provider, Supabase, in their West EU (Ireland) region. As this is within the European Economic Area, transfers of your data there are already covered by the UK's own data protection framework and do not require additional safeguards beyond what is described in this policy.",
+        text: "If you enable cloud sync, your data is processed on servers operated by our backend provider, Supabase, in their West EU (Ireland) region, and crash reports are held in Sentry's EU data centre. Transfers to the EEA are covered by the UK's adequacy regulations. If you use the AI statement reader, Google Cloud may process the statement outside the UK under its data processing terms, which include the safeguards UK law requires for international transfers.",
       },
     ],
   },
@@ -351,7 +395,7 @@ const sections: Section[] = [
     blocks: [
       {
         type: "p",
-        text: "Tax Sole Trader does not display third-party advertising and does not use analytics or tracking SDKs to build a profile of your behaviour across other apps or websites. Any diagnostics collected (see section 3.4) stay on your device and are used only to help the app function correctly.",
+        text: "Tax Sole Trader does not display third-party advertising and does not use analytics or tracking SDKs to build a profile of your behaviour across other apps or websites. Local diagnostics (see section 3.4) stay on your device; crash reports from release versions go to Sentry only to help us fix problems, without personal identifiers.",
       },
     ],
   },
@@ -445,7 +489,7 @@ export default function PrivacyPage() {
           <div className="text-xs font-black uppercase tracking-[0.32em] text-blue-300">Legal</div>
           <h1 className="mt-4 text-4xl font-black tracking-[-1px] md:text-6xl">Privacy Policy</h1>
           <p className="mt-5 leading-8 text-slate-300">
-            Last updated: 18 July 2026. Applies to the Tax Sole Trader mobile application for Android (and, where applicable, other platforms distributing the same app).
+            Last updated: 30 September 2026. Applies to the Tax Sole Trader mobile application for Android and iOS.
           </p>
           <div className="mt-10 grid gap-8 text-slate-300">
             {sections.map((section) => (
