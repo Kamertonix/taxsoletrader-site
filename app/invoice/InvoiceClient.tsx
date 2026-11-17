@@ -116,6 +116,24 @@ export default function InvoiceClient() {
 
   const lines = Array.isArray(invoice.lines) ? invoice.lines : [];
   const hasBankDetails = Boolean(invoice.bank_account_number || invoice.bank_iban);
+  const issuerName = invoice.business_name || invoice.business_owner_name || invoice.bank_account_holder || '';
+  const { reference: paymentReference, note: paymentNote } = paymentReferenceFor(invoice);
+  const totalAmount = Number(invoice.total_amount || 0);
+  const vatAmount = Number(invoice.vat_amount || 0);
+  // Not VAT registered (or nothing to charge): a "VAT £0.00" row only
+  // makes the invoice look as if VAT was charged at 0%.
+  const showVatRow = Boolean(invoice.reverse_charge) || Math.abs(vatAmount) >= 0.005;
+  const allPaymentDetails = [
+    invoice.bank_account_holder && `Account name: ${invoice.bank_account_holder}`,
+    invoice.bank_name && `Bank: ${invoice.bank_name}`,
+    invoice.bank_sort_code && `Sort code: ${invoice.bank_sort_code}`,
+    invoice.bank_account_number && `Account number: ${invoice.bank_account_number}`,
+    invoice.bank_iban && `IBAN: ${invoice.bank_iban}`,
+    `Amount: ${money(totalAmount)}`,
+    paymentReference && `Payment reference: ${paymentReference}`,
+  ]
+    .filter(Boolean)
+    .join('\n');
 
   return (
     <main style={{ background: 'var(--tst-bg)', minHeight: '100vh', padding: '24px', fontFamily: '-apple-system, Segoe UI, Roboto, Arial, sans-serif' }}>
@@ -132,7 +150,8 @@ export default function InvoiceClient() {
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 18 }}>
           <div>
-            <div style={{ fontWeight: 800, fontSize: 18 }}>{invoice.business_name || invoice.business_owner_name || 'Invoice'}</div>
+            <div style={{ fontWeight: 800, fontSize: 18 }}>Invoice</div>
+            {issuerName && <div style={{ fontSize: 13, marginTop: 2 }}>From {issuerName}</div>}
             <div style={{ color: 'var(--tst-text-muted)', fontSize: 12 }}>Invoice {invoice.invoice_number || ''}</div>
           </div>
           <div style={{ fontWeight: 900, fontSize: 22, color: 'var(--tst-accent)' }}>{money(Number(invoice.total_amount || 0))}</div>
@@ -186,7 +205,7 @@ export default function InvoiceClient() {
           {invoice.reverse_charge ? (
             <TotalsRow label="VAT" value="Reverse charge - customer to account for VAT" />
           ) : (
-            <TotalsRow label="VAT" value={money(Number(invoice.vat_amount || 0))} />
+            showVatRow && <TotalsRow label="VAT" value={money(vatAmount)} />
           )}
           {Number(invoice.cis_amount || 0) > 0 && <TotalsRow label="CIS deduction" value={`-${money(Number(invoice.cis_amount || 0))}`} />}
           <div
@@ -232,15 +251,26 @@ export default function InvoiceClient() {
           <div style={{ marginTop: 16, background: 'var(--tst-bg)', border: '1px solid var(--tst-success)', borderRadius: 14, padding: 14 }}>
             <div style={{ fontWeight: 900, fontSize: 14, color: 'var(--tst-success)', marginBottom: 6 }}>💳 Pay Now — Bank Transfer</div>
             <div style={{ fontSize: 12, color: 'var(--tst-text-muted)', marginBottom: 10, lineHeight: 1.4 }}>
-              Pay directly from your bank using these details. Please include the payment reference so it&apos;s matched to this invoice.
+              Copy these details into your banking app and add a new payee. Please use the payment reference so your payment is matched to this invoice.
             </div>
             <div>
               {invoice.bank_account_holder && <BankRow label="Account name" value={invoice.bank_account_holder} />}
               {invoice.bank_name && <BankRow label="Bank" value={invoice.bank_name} />}
-              {invoice.bank_sort_code && <BankRow label="Sort code" value={invoice.bank_sort_code} />}
-              {invoice.bank_account_number && <BankRow label="Account number" value={invoice.bank_account_number} />}
-              {invoice.bank_iban && <BankRow label="IBAN" value={invoice.bank_iban} />}
-              {invoice.bank_payment_reference && <BankRow label="Payment reference" value={invoice.bank_payment_reference} />}
+              {invoice.bank_sort_code && (
+                <BankRow label="Sort code" value={invoice.bank_sort_code} copyValue={invoice.bank_sort_code.replace(/[^0-9]/g, '')} />
+              )}
+              {invoice.bank_account_number && (
+                <BankRow label="Account number" value={invoice.bank_account_number} copyValue={invoice.bank_account_number.replace(/\s/g, '')} />
+              )}
+              {invoice.bank_iban && <BankRow label="IBAN" value={invoice.bank_iban} copyValue={invoice.bank_iban.replace(/\s/g, '')} />}
+              <BankRow label="Amount" value={money(totalAmount)} copyValue={Math.abs(totalAmount).toFixed(2)} />
+              {paymentReference && <BankRow label="Payment reference" value={paymentReference} copyValue={paymentReference} />}
+            </div>
+            {paymentNote && (
+              <div style={{ fontSize: 12, color: 'var(--tst-text-muted)', marginTop: 8, lineHeight: 1.4 }}>{paymentNote}</div>
+            )}
+            <div style={{ marginTop: 12 }}>
+              <CopyButton text={allPaymentDetails} label="Copy all payment details" wide />
             </div>
           </div>
         )}
@@ -274,11 +304,84 @@ function TotalsRow({ label, value }: { label: string; value: string }) {
   );
 }
 
-function BankRow({ label, value }: { label: string; value: string }) {
+// UK bank payment references are at most 18 characters. The app sends the
+// business's "payment reference" setting, which is often an instruction
+// ("Please use invoice number as payment reference") rather than a
+// reference -- the PDF shows "Reference: <invoice number>" in that case,
+// so the page does the same and keeps the instruction as a note.
+function paymentReferenceFor(invoice: InvoiceData): { reference: string; note: string } {
+  const number = (invoice.invoice_number || '').trim();
+  const given = (invoice.bank_payment_reference || '').trim();
+  const looksLikeInstruction = given.length > 18 || /invoice number/i.test(given);
+  if (!given) return { reference: number, note: '' };
+  if (looksLikeInstruction) return { reference: number, note: number ? '' : given };
+  return { reference: given, note: '' };
+}
+
+async function copyText(text: string): Promise<boolean> {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {
+    // fall back below
+  }
+  try {
+    const area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.opacity = '0';
+    document.body.appendChild(area);
+    area.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(area);
+    return ok;
+  } catch {
+    return false;
+  }
+}
+
+function CopyButton({ text, label = 'Copy', wide = false }: { text: string; label?: string; wide?: boolean }) {
+  const [state, setState] = useState<'idle' | 'copied' | 'failed'>('idle');
+  const onClick = async () => {
+    const ok = await copyText(text);
+    setState(ok ? 'copied' : 'failed');
+    window.setTimeout(() => setState('idle'), 1800);
+  };
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '3px 0', fontSize: 13 }}>
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={wide ? label : `${label} ${text}`}
+      style={{
+        display: wide ? 'block' : 'inline-block',
+        width: wide ? '100%' : undefined,
+        background: wide ? 'var(--tst-success)' : 'transparent',
+        color: wide ? '#03140D' : 'var(--tst-accent)',
+        border: wide ? 'none' : '1px solid var(--tst-border)',
+        borderRadius: wide ? 12 : 8,
+        padding: wide ? 12 : '2px 8px',
+        fontWeight: 800,
+        fontSize: wide ? 14 : 12,
+        cursor: 'pointer',
+        flexShrink: 0,
+      }}
+    >
+      {state === 'copied' ? 'Copied ✓' : state === 'failed' ? 'Press and hold to copy' : label}
+    </button>
+  );
+}
+
+function BankRow({ label, value, copyValue }: { label: string; value: string; copyValue?: string }) {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10, padding: '4px 0', fontSize: 13 }}>
       <span style={{ color: 'var(--tst-text-muted)' }}>{label}</span>
-      <span style={{ fontWeight: 800 }}>{value}</span>
+      <span style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+        <span style={{ fontWeight: 800, overflowWrap: 'anywhere', textAlign: 'right' }}>{value}</span>
+        {copyValue && <CopyButton text={copyValue} />}
+      </span>
     </div>
   );
 }
