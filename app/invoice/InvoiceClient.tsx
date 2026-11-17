@@ -24,6 +24,11 @@ interface InvoiceLine {
 interface InvoiceData {
   business_name?: string;
   business_owner_name?: string;
+  business_address?: string;
+  business_email?: string;
+  business_phone?: string;
+  client_address?: string;
+  client_email?: string;
   invoice_number?: string;
   client_name?: string;
   invoice_date?: string;
@@ -151,18 +156,23 @@ export default function InvoiceClient() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 18 }}>
           <div>
             <div style={{ fontWeight: 800, fontSize: 18 }}>Invoice</div>
-            {issuerName && <div style={{ fontSize: 13, marginTop: 2 }}>From {issuerName}</div>}
             <div style={{ color: 'var(--tst-text-muted)', fontSize: 12 }}>Invoice {invoice.invoice_number || ''}</div>
           </div>
           <div style={{ fontWeight: 900, fontSize: 22, color: 'var(--tst-accent)' }}>{money(Number(invoice.total_amount || 0))}</div>
         </div>
 
         <div style={{ display: 'flex', gap: 18, marginBottom: 16, fontSize: 13, flexWrap: 'wrap' }}>
-          <div>
-            <span style={{ color: 'var(--tst-text-muted)' }}>Billed to</span>
-            <br />
-            {invoice.client_name || ''}
-          </div>
+          {issuerName && (
+            <PartyBlock
+              label="From"
+              name={issuerName}
+              lines={[invoice.business_address, invoice.business_email, invoice.business_phone]}
+            />
+          )}
+          <PartyBlock label="Billed to" name={invoice.client_name || ''} lines={[invoice.client_address, invoice.client_email]} />
+        </div>
+
+        <div style={{ display: 'flex', gap: 18, marginBottom: 16, fontSize: 13, flexWrap: 'wrap' }}>
           <div>
             <span style={{ color: 'var(--tst-text-muted)' }}>Date</span>
             <br />
@@ -292,6 +302,21 @@ export default function InvoiceClient() {
         </div>
       </div>
     </main>
+  );
+}
+
+function PartyBlock({ label, name, lines }: { label: string; name: string; lines: (string | undefined)[] }) {
+  const extra = lines.map((line) => (line || '').trim()).filter((line) => line.length > 0);
+  return (
+    <div style={{ flex: '1 1 200px', minWidth: 0 }}>
+      <span style={{ color: 'var(--tst-text-muted)' }}>{label}</span>
+      <div style={{ fontWeight: 700, marginTop: 2 }}>{name}</div>
+      {extra.map((line, i) => (
+        <div key={i} style={{ color: 'var(--tst-text-muted)', fontSize: 12, lineHeight: 1.45, overflowWrap: 'anywhere' }}>
+          {line}
+        </div>
+      ))}
+    </div>
   );
 }
 
